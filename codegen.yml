@@ -1,0 +1,17 @@
+overwrite: true
+schema: "http://localhost:4000/graphql"    # GraphQL 스키마의 경로
+documents: "./src/**/*.graphql"   # GraphQL 쿼리 문서의 경로
+generates:
+  ./src/gql/generated/:
+    preset: near-operation-file
+    presetConfig:
+      extension: .tsx
+      folder: ./gql/generated
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+  ./graphql.schema.json:
+    plugins:
+      - introspection
+
